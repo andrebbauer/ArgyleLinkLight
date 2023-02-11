@@ -21,6 +21,7 @@
 		6526617729983ED300F78B14 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6526617529983ED300F78B14 /* Localizable.strings */; };
 		6526617929983FB400F78B14 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6526617829983FB400F78B14 /* Strings+Generated.swift */; };
 		6526617B2998415300F78B14 /* SearchInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6526617A2998415300F78B14 /* SearchInputView.swift */; };
+		6526617E2998518E00F78B14 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6526617D2998518E00F78B14 /* API.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		6526617629983ED300F78B14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6526617829983FB400F78B14 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		6526617A2998415300F78B14 /* SearchInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInputView.swift; sourceTree = "<group>"; };
+		6526617D2998518E00F78B14 /* API.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,15 +75,16 @@
 			isa = PBXGroup;
 			children = (
 				6526617429983ED300F78B14 /* Assets */,
-				6526613E29981F4F00F78B14 /* AppDelegate.swift */,
-				6526614029981F4F00F78B14 /* SceneDelegate.swift */,
 				652661562998251300F78B14 /* Coordinator */,
 				6526615F2998324100F78B14 /* Helper */,
 				6526615A299829D300F78B14 /* Model */,
+				6526617C29984E2600F78B14 /* Network */,
 				652661572998283900F78B14 /* Search */,
-				6526614729981F5100F78B14 /* Assets.xcassets */,
+				6526613E29981F4F00F78B14 /* AppDelegate.swift */,
+				6526614029981F4F00F78B14 /* SceneDelegate.swift */,
 				6526614929981F5100F78B14 /* LaunchScreen.storyboard */,
 				6526614C29981F5100F78B14 /* Info.plist */,
+				6526617D2998518E00F78B14 /* API.plist */,
 			);
 			path = ArgyleLinkLight;
 			sourceTree = "<group>";
@@ -125,10 +128,18 @@
 		6526617429983ED300F78B14 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6526614729981F5100F78B14 /* Assets.xcassets */,
 				6526617529983ED300F78B14 /* Localizable.strings */,
 				6526617829983FB400F78B14 /* Strings+Generated.swift */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		6526617C29984E2600F78B14 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6526614B29981F5100F78B14 /* LaunchScreen.storyboard in Resources */,
+				6526617E2998518E00F78B14 /* API.plist in Resources */,
 				6526617729983ED300F78B14 /* Localizable.strings in Resources */,
 				6526614829981F5100F78B14 /* Assets.xcassets in Resources */,
 			);
