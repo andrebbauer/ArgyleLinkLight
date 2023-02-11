@@ -11,7 +11,8 @@ class MainCoordinator: Coordinator {
     }
 
     func start() {
-        let viewController = ViewController()
+        let searchView = SearchView()
+        let viewController = UIHostingController(rootView: searchView)
         navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
