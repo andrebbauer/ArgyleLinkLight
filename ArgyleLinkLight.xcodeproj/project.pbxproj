@@ -12,6 +12,8 @@
 		6526614329981F4F00F78B14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6526614229981F4F00F78B14 /* ViewController.swift */; };
 		6526614829981F5100F78B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6526614729981F5100F78B14 /* Assets.xcassets */; };
 		6526614B29981F5100F78B14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6526614929981F5100F78B14 /* LaunchScreen.storyboard */; };
+		652661532998247100F78B14 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652661522998247100F78B14 /* Coordinator.swift */; };
+		65266155299824BD00F78B14 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65266154299824BD00F78B14 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		6526614729981F5100F78B14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6526614A29981F5100F78B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6526614C29981F5100F78B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		652661522998247100F78B14 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		65266154299824BD00F78B14 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +60,22 @@
 			children = (
 				6526613E29981F4F00F78B14 /* AppDelegate.swift */,
 				6526614029981F4F00F78B14 /* SceneDelegate.swift */,
+				652661562998251300F78B14 /* Coordinator */,
 				6526614229981F4F00F78B14 /* ViewController.swift */,
 				6526614729981F5100F78B14 /* Assets.xcassets */,
 				6526614929981F5100F78B14 /* LaunchScreen.storyboard */,
 				6526614C29981F5100F78B14 /* Info.plist */,
 			);
 			path = ArgyleLinkLight;
+			sourceTree = "<group>";
+		};
+		652661562998251300F78B14 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				652661522998247100F78B14 /* Coordinator.swift */,
+				65266154299824BD00F78B14 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,8 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652661532998247100F78B14 /* Coordinator.swift in Sources */,
 				6526614329981F4F00F78B14 /* ViewController.swift in Sources */,
 				6526613F29981F4F00F78B14 /* AppDelegate.swift in Sources */,
+				65266155299824BD00F78B14 /* MainCoordinator.swift in Sources */,
 				6526614129981F4F00F78B14 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
