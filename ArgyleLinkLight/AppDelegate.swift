@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  ArgyleLinkLight
-//
-//  Created by André on 11/02/23.
-//
-
 import UIKit
 
 @main
