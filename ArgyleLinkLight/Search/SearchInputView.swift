@@ -1,10 +1,3 @@
-//
-//  SearchInputView.swift
-//  ArgyleLinkLight
-//
-//  Created by André on 11/02/23.
-//
-
 import SwiftUI
 
 struct SearchInputView: View {
@@ -44,6 +37,6 @@ struct SearchInputView: View {
 
 struct SearchInputView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchInputView(viewModel: SearchViewModel())
+        SearchInputView(viewModel: SearchViewModel(limit: 15, networkManager: SearchNetworkManager(engine: NetworkEngine.shared)))
     }
 }

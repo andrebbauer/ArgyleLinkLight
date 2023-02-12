@@ -29,6 +29,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(viewModel: SearchViewModel())
+        SearchView(viewModel: SearchViewModel(limit: 15, networkManager: SearchNetworkManager(engine: NetworkEngine.shared)))
     }
 }

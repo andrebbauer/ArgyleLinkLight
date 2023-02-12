@@ -21,7 +21,7 @@ struct LinkItemView: View {
             VStack(alignment: .leading, spacing: Style.Spacing.small) {
                 Text(linkItem.name)
                     .font(.headline)
-                Text(linkItem.kind)
+                Text(linkItem.kind.capitalized)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
