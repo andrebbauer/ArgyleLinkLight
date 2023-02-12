@@ -6,22 +6,22 @@ struct LinkItemView: View {
     let errorImage = Image(systemName: "exclamationmark.triangle")
 
     var body: some View {
-        HStack(alignment: .center, spacing: Style.Spacing.padding) {
-            AsyncImage(url: URL(string: linkItem.logoURL)) { phase in
+        HStack(alignment: .center, spacing: Constants.Spacing.regular) {
+            AsyncImage(url: URL(string: self.linkItem.logoURL)) { phase in
                 switch phase {
                 case .empty:
                     ProgressView()
                 case .success(let image):
                     image.resizable()
                 default:
-                    errorImage
+                    self.errorImage
                 }
             }
             .frame(width: 50, height: 50)
-            VStack(alignment: .leading, spacing: Style.Spacing.small) {
-                Text(linkItem.name)
+            VStack(alignment: .leading, spacing: Constants.Spacing.small) {
+                Text(self.linkItem.name)
                     .font(.headline)
-                Text(linkItem.kind.capitalized)
+                Text(self.linkItem.kind.capitalized)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
@@ -30,9 +30,9 @@ struct LinkItemView: View {
     }
 }
 
-struct LinkItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        LinkItemView(linkItem: sampleLinkItem)
-            .previewLayout(.sizeThatFits)
-    }
-}
+//struct LinkItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LinkItemView(linkItem: sampleLinkItem)
+//            .previewLayout(.sizeThatFits)
+//    }
+//}

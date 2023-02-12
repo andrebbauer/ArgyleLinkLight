@@ -1,7 +1,6 @@
 import Foundation
 
 enum SearchEndpoint: Endpoint {
-
     case search(searchTerm: String, limit: String)
 
     var scheme: String {
@@ -14,7 +13,7 @@ enum SearchEndpoint: Endpoint {
     var baseURL: String {
         switch self {
         default:
-            return API.apiUrl
+            return APIKeys.keys.apiUrl
         }
     }
 

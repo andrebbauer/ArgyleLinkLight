@@ -2,18 +2,17 @@ protocol SearchManagerProtocol {
     func search(for searchTerm: String, limit: String) async -> Result<[LinkItem], Error>
 }
 
-struct SearchNetworkManager: SearchManagerProtocol {
+struct SearchManager: SearchManagerProtocol {
+    let networkAPI: NetworkAPIProtocol
 
-    let engine: Engine
-
-    init(engine: Engine) {
-        self.engine = engine
+    init(networkAPI: NetworkAPIProtocol) {
+        self.networkAPI = networkAPI
     }
 
     func search(for searchTerm: String, limit: String) async -> Result<[LinkItem], Error> {
         let endpoint = SearchEndpoint.search(searchTerm: searchTerm, limit: limit)
         do {
-            let response: LinkItemResponse = try await engine.request(for: endpoint)
+            let response: LinkItemResponse = try await self.networkAPI.request(for: endpoint)
             return .success(response.results)
         } catch {
             return .failure(error)

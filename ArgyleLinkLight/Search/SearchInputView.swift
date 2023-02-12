@@ -3,33 +3,24 @@ import SwiftUI
 struct SearchInputView: View {
 
     @StateObject var viewModel: SearchViewModel
-    @State var isSearching: Bool = false
 
     var body: some View {
         ZStack {
-            TextField(Strings.search, text: $viewModel.searchText)
-                .padding(.vertical, Style.Spacing.small)
-                .padding(.horizontal, Style.Spacing.padding)
+            TextField(Strings.search, text: self.$viewModel.searchText)
+                .padding(.vertical, Constants.Spacing.small)
+                .padding(.horizontal, Constants.Spacing.regular)
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(8)
-                .onChange(of: viewModel.searchText, perform: { string in
-                    isSearching = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + viewModel.debounceTime) {
-                        if isSearching && string.count >= 2 {
-                            viewModel.search()
-                        }
-                    }
-                })
             HStack {
                 Spacer()
                 Button(action: {
-                    viewModel.searchText = ""
-                    viewModel.searchResults = []
+                    self.viewModel.searchText = ""
+                    self.viewModel.searchResults = []
                 }) {
                     Image(systemName: "xmark.circle")
                         .foregroundColor(.gray)
                 }
-                .padding(.trailing, Style.Spacing.padding)
+                .padding(.trailing, Constants.Spacing.regular)
             }
         }
     }
@@ -37,6 +28,6 @@ struct SearchInputView: View {
 
 struct SearchInputView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchInputView(viewModel: SearchViewModel(limit: 15, networkManager: SearchNetworkManager(engine: NetworkEngine.shared)))
+        SearchInputView(viewModel: SearchViewModel(limit: Constants.limit, networkManager: SearchManager(networkAPI: NetworkAPI.shared)))
     }
 }

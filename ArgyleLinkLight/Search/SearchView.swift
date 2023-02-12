@@ -6,18 +6,18 @@ struct SearchView: View {
 
     var body: some View {
         VStack {
-            SearchInputView(viewModel: viewModel)
-                .padding(.horizontal, Style.Spacing.padding)
-                .padding(.bottom, Style.Spacing.padding)
+            SearchInputView(viewModel: self.viewModel)
+                .padding(.horizontal, Constants.Spacing.regular)
+                .padding(.bottom, Constants.Spacing.regular)
 
-            if $viewModel.searchResults.isEmpty {
+            if self.viewModel.searchResults.isEmpty {
                 Text(Strings.noResults)
-                    .padding(.top, Style.Spacing.padding)
+                    .padding(.top, Constants.Spacing.regular)
                     .foregroundColor(.gray)
             } else {
-                List(viewModel.searchResults, id: \.itemID) { linkItem in
+                List(self.viewModel.searchResults, id: \.itemID) { linkItem in
                     LinkItemView(linkItem: linkItem)
-                        .padding(.vertical, Style.Spacing.small)
+                        .padding(.vertical, Constants.Spacing.small)
                 }
             }
 
@@ -29,6 +29,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(viewModel: SearchViewModel(limit: 15, networkManager: SearchNetworkManager(engine: NetworkEngine.shared)))
+        SearchView(viewModel: SearchViewModel(limit: 15, networkManager: SearchManager(networkAPI: NetworkAPI.shared)))
     }
 }
