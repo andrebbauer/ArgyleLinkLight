@@ -5,6 +5,12 @@ class SearchViewModel: ObservableObject {
 
     @Published var searchText: String = ""
     @Published var searchResults: [LinkItem] = []
+    @Published var isSearching: Bool = false
+    @Published var requestFailed: Bool = false
+
+    var noResults: Bool {
+        !self.isSearching && self.searchResults.isEmpty || self.searchText == ""
+    }
 
     private let limit: String
     private let networkManager: SearchManagerProtocol
@@ -30,15 +36,17 @@ class SearchViewModel: ObservableObject {
     }
 
     func search(_ param: String) {
+        isSearching = true
         Task {
             let result = await self.networkManager.search(for: param, limit: self.limit)
             switch result {
             case .success(let items):
                 await MainActor.run {
+                    self.isSearching = false
                     self.searchResults = items
                 }
-            case .failure(let error):
-                print(error)
+            case .failure:
+                self.requestFailed = true
             }
         }
     }

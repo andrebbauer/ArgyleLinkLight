@@ -10,13 +10,16 @@ protocol NetworkAPIProtocol {
 }
 
 class NetworkAPI: NetworkAPIProtocol {
-
-    private let session: URLSession = .shared
+    private let session: URLSessionProtocol
     private var basicAuth: String {
         let username = APIKeys.keys.apiKeyId
         let password = APIKeys.keys.apiKeySecret
         guard let loginData = "\(username):\(password)".data(using: .utf8) else { return "" }
         return loginData.base64EncodedString()
+    }
+
+    init(session: URLSessionProtocol = URLSession.shared) {
+        self.session = session
     }
 
     func request<T: Decodable>(for endpoint: Endpoint) async throws -> T {

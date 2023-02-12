@@ -1,2 +1,4 @@
 "search" = "Search";
 "no_results" = "No results found";
+"failed_fetch" = "Failed to fetch items";
+"ok" = "ok";

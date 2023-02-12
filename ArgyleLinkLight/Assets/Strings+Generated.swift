@@ -10,8 +10,12 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum Strings {
+  /// Failed to fetch items
+  public static let failedFetch = Strings.tr("Localizable", "failed_fetch", fallback: "Failed to fetch items")
   /// No results found
   public static let noResults = Strings.tr("Localizable", "no_results", fallback: "No results found")
+  /// ok
+  public static let ok = Strings.tr("Localizable", "ok", fallback: "ok")
   /// Search
   public static let search = Strings.tr("Localizable", "search", fallback: "Search")
 }
