@@ -1,14 +1,9 @@
-import Foundation
 @testable import ArgyleLinkLight
+import Foundation
 
 class MockNetworkAPI: NetworkAPIProtocol {
-    let session: URLSessionProtocol
     var expectedData: Data?
     var expectedError: Error?
-
-    init(session: URLSession) {
-        self.session = session
-    }
 
     func request<T: Decodable>(for endpoint: Endpoint) async throws -> T {
         if let error = expectedError {

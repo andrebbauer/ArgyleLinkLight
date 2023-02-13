@@ -8,8 +8,7 @@ final class NetworkAPITests: XCTestCase {
     var endpoint: SearchEndpoint = .search(searchTerm: "", limit: "15")
 
     func testNetworkApiReturnsCorrectData() async throws {
-        let validData = try! JSONEncoder().encode(LinkItemResponse.sampleResponse)
-        session = MockURLSession(mockData: validData, mockResponse: .validResponse)
+        session = MockURLSession(mockData: .validData, mockResponse: .validResponse)
         networkAPI = NetworkAPI(session: session)
 
         let response: LinkItemResponse = try await networkAPI.request(for: endpoint)
@@ -31,7 +30,7 @@ final class NetworkAPITests: XCTestCase {
     }
 
     func testNetworkApiBadResponse() async throws {
-        session = MockURLSession(mockData: Data(), mockResponse: .code404Response)
+        session = MockURLSession(mockData: .validData, mockResponse: .code404Response)
         networkAPI = NetworkAPI(session: session)
         do {
             let _: LinkItemResponse = try await networkAPI.request(for: endpoint)
@@ -44,7 +43,7 @@ final class NetworkAPITests: XCTestCase {
     }
 
     func testNetworkApiNoResponseWithData() async throws {
-        session = MockURLSession(mockData: Data())
+        session = MockURLSession(mockData: .validData)
         networkAPI = NetworkAPI(session: session)
         do {
             let _: LinkItemResponse = try await networkAPI.request(for: endpoint)
