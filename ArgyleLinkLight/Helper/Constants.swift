@@ -1,6 +1,7 @@
 import CoreGraphics
 
 struct Constants {
+    static let searchTermMinLength: Int = 2
     static let limit: Int = 15
     static let debounceTime: Double = 0.5
 

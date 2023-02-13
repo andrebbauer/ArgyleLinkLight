@@ -29,10 +29,9 @@ class SearchViewModel: ObservableObject {
         self.$searchText
             .debounce(for: .seconds(Constants.debounceTime), scheduler: RunLoop.main)
             .filter { [weak self] text in
-                if text.count < 2 {
-                    self?.resetResults()
-                }
-                return text.count >= 2 && text != self?.lastTermSearched && self?.isSearching == false
+                let shouldReset = text.count < Constants.searchTermMinLength
+                self?.resetResults(shouldReset)
+                return text.count >= Constants.searchTermMinLength && text != self?.lastTermSearched && self?.isSearching == false
             }
             .sink { [weak self ] text in
                 self?.search(text)
@@ -40,9 +39,11 @@ class SearchViewModel: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    private func resetResults() {
-        self.lastTermSearched = ""
-        self.searchResults = []
+    private func resetResults(_ shouldReset: Bool) {
+        if shouldReset {
+            self.lastTermSearched = ""
+            self.searchResults = []
+        }
     }
 
     private func search(_ param: String) {
