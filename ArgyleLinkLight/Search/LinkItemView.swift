@@ -30,9 +30,9 @@ struct LinkItemView: View {
     }
 }
 
-//struct LinkItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LinkItemView(linkItem: sampleLinkItem)
-//            .previewLayout(.sizeThatFits)
-//    }
-//}
+struct LinkItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        LinkItemView(linkItem: LinkItem(itemID: "id", name: "name", kind: "kind", logoURL: " url"))
+            .previewLayout(.sizeThatFits)
+    }
+}
