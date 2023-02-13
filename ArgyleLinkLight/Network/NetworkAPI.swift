@@ -3,6 +3,7 @@ import Foundation
 enum APIError: Error {
     case invalidResponse
     case invalidURL
+    case failedToDecode
 }
 
 protocol NetworkAPIProtocol {
@@ -37,7 +38,11 @@ class NetworkAPI: NetworkAPIProtocol {
             throw APIError.invalidResponse
         }
 
-        return try JSONDecoder().decode(T.self, from: data)
+        do {
+            return try JSONDecoder().decode(T.self, from: data)
+        } catch {
+            throw APIError.failedToDecode
+        }
     }
 
     private func buildRequest(url: URL, httpMethod: String = "GET") -> URLRequest {
