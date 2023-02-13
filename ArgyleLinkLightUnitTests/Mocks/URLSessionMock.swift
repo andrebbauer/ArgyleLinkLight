@@ -1,7 +1,7 @@
 @testable import ArgyleLinkLight
 import Foundation
 
-class MockURLSession: URLSessionProtocol {
+class URLSessionMock: URLSessionProtocol {
     var mockData: Data?
     var mockResponse: URLResponse?
     var mockError: Error?
@@ -21,13 +21,13 @@ class MockURLSession: URLSessionProtocol {
             let data = mockData,
             let response = mockResponse
         else {
-            throw MockURLSessionError.invalidData
+            throw URLSessionMockError.invalidData
         }
 
         return (data, response)
     }
 }
 
-enum MockURLSessionError: Error {
+enum URLSessionMockError: Error {
     case invalidData
 }

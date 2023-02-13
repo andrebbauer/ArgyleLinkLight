@@ -4,23 +4,23 @@ import XCTest
 final class NetworkAPITests: XCTestCase {
 
     var session: URLSessionProtocol!
-    var networkAPI: NetworkAPIProtocol!
+    var sut: NetworkAPIProtocol!
     var endpoint: SearchEndpoint = .search(searchTerm: "", limit: "15")
 
     func testNetworkApiReturnsCorrectData() async throws {
-        session = MockURLSession(mockData: .validData, mockResponse: .validResponse)
-        networkAPI = NetworkAPI(session: session)
+        session = URLSessionMock(mockData: .validData, mockResponse: .validResponse)
+        sut = NetworkAPI(session: session)
 
-        let response: LinkItemResponse = try await networkAPI.request(for: endpoint)
+        let response: LinkItemResponse = try await sut.request(for: endpoint)
 
         XCTAssertEqual(response, LinkItemResponse.sampleResponse)
     }
 
     func testNetworkApiReturnsError() async throws {
-        session = MockURLSession(mockError: APIError.invalidURL)
-        networkAPI = NetworkAPI(session: session)
+        session = URLSessionMock(mockError: APIError.invalidURL)
+        sut = NetworkAPI(session: session)
         do {
-            let _: LinkItemResponse = try await networkAPI.request(for: endpoint)
+            let _: LinkItemResponse = try await sut.request(for: endpoint)
             XCTFail("Expected an error to be thrown")
         } catch let error as APIError {
             XCTAssertEqual(error, .invalidURL)
@@ -30,10 +30,10 @@ final class NetworkAPITests: XCTestCase {
     }
 
     func testNetworkApiBadResponse() async throws {
-        session = MockURLSession(mockData: .validData, mockResponse: .code404Response)
-        networkAPI = NetworkAPI(session: session)
+        session = URLSessionMock(mockData: .validData, mockResponse: .code404Response)
+        sut = NetworkAPI(session: session)
         do {
-            let _: LinkItemResponse = try await networkAPI.request(for: endpoint)
+            let _: LinkItemResponse = try await sut.request(for: endpoint)
             XCTFail("Expected an error to be thrown")
         } catch let error as APIError {
             XCTAssertEqual(error, .invalidResponse)
@@ -43,12 +43,12 @@ final class NetworkAPITests: XCTestCase {
     }
 
     func testNetworkApiNoResponseWithData() async throws {
-        session = MockURLSession(mockData: .validData)
-        networkAPI = NetworkAPI(session: session)
+        session = URLSessionMock(mockData: .validData)
+        sut = NetworkAPI(session: session)
         do {
-            let _: LinkItemResponse = try await networkAPI.request(for: endpoint)
+            let _: LinkItemResponse = try await sut.request(for: endpoint)
             XCTFail("Expected an error to be thrown")
-        } catch let error as MockURLSessionError {
+        } catch let error as URLSessionMockError {
             XCTAssertEqual(error, .invalidData)
         } catch {
             XCTFail("Unexpected error thrown: \(error)")
@@ -56,12 +56,12 @@ final class NetworkAPITests: XCTestCase {
     }
 
     func testNetworkApiNoDataWithResponse() async throws {
-        session = MockURLSession(mockResponse: .validResponse)
-        networkAPI = NetworkAPI(session: session)
+        session = URLSessionMock(mockResponse: .validResponse)
+        sut = NetworkAPI(session: session)
         do {
-            let _: LinkItemResponse = try await networkAPI.request(for: endpoint)
+            let _: LinkItemResponse = try await sut.request(for: endpoint)
             XCTFail("Expected an error to be thrown")
-        } catch let error as MockURLSessionError {
+        } catch let error as URLSessionMockError {
             XCTAssertEqual(error, .invalidData)
         } catch {
             XCTFail("Unexpected error thrown: \(error)")

@@ -1,7 +1,7 @@
 @testable import ArgyleLinkLight
 import Foundation
 
-class MockNetworkAPI: NetworkAPIProtocol {
+class NetworkAPIMock: NetworkAPIProtocol {
     var expectedData: Data?
     var expectedError: Error?
 

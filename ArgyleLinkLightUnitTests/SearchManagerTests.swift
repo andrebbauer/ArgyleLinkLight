@@ -2,20 +2,20 @@
 import XCTest
 
 final class SearchManagerTests: XCTestCase {
-    var searchManager: SearchManager!
-    var mockNetworkAPI: MockNetworkAPI!
+    var sut: SearchManager!
+    var mockNetworkAPI: NetworkAPIMock!
 
     override func setUp() {
         super.setUp()
-        mockNetworkAPI = MockNetworkAPI()
-        searchManager = SearchManager(networkAPI: mockNetworkAPI)
+        mockNetworkAPI = NetworkAPIMock()
+        sut = SearchManager(networkAPI: mockNetworkAPI)
     }
 
     func testSearchSuccess() async {
         let expectedResults: [LinkItem] = [.sampleItem]
         mockNetworkAPI.expectedData = .validData
 
-        let result = await searchManager.search(for: "example", limit: "10")
+        let result = await sut.search(for: "example", limit: "10")
 
         switch result {
         case .success(let results):
@@ -29,7 +29,7 @@ final class SearchManagerTests: XCTestCase {
         let expectedError = APIError.invalidURL
         mockNetworkAPI.expectedError = expectedError
 
-        let result = await searchManager.search(for: "example", limit: "10")
+        let result = await sut.search(for: "example", limit: "10")
 
         switch result {
         case .success:
