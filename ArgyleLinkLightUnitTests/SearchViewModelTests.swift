@@ -11,6 +11,12 @@ final class SearchViewModelTests: XCTestCase {
         sut = SearchViewModel(limit: Constants.limit, networkManager: searchManagerMock)
     }
 
+    override func tearDown() {
+        searchManagerMock = nil
+        sut = nil
+        super.tearDown()
+    }
+
     func testNoResultsIsSearchingFalse() {
         XCTAssertTrue(sut.noResults)
         sut.searchResults = [.sampleItem]

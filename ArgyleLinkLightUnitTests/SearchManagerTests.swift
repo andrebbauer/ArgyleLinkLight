@@ -11,6 +11,12 @@ final class SearchManagerTests: XCTestCase {
         sut = SearchManager(networkAPI: mockNetworkAPI)
     }
 
+    override func tearDown() {
+        mockNetworkAPI = nil
+        sut = nil
+        super.tearDown()
+    }
+
     func testSearchSuccess() async {
         let expectedResults: [LinkItem] = [.sampleItem]
         mockNetworkAPI.expectedData = .validData
