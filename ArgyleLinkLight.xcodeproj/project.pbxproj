@@ -127,6 +127,16 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		65105194299A854500EF2615 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6526615D29982D5E00F78B14 /* LinkItemView.swift */,
+				6526616B299839BB00F78B14 /* SearchView.swift */,
+				6526617A2998415300F78B14 /* SearchInputView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		6526613229981F4F00F78B14 = {
 			isa = PBXGroup;
 			children = (
@@ -175,10 +185,8 @@
 		652661572998283900F78B14 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				6526615D29982D5E00F78B14 /* LinkItemView.swift */,
+				65105194299A854500EF2615 /* Views */,
 				65266162299834F800F78B14 /* SearchViewModel.swift */,
-				6526616B299839BB00F78B14 /* SearchView.swift */,
-				6526617A2998415300F78B14 /* SearchInputView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
