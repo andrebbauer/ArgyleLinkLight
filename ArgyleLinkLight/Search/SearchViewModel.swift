@@ -6,6 +6,7 @@ class SearchViewModel: ObservableObject {
     @Published var searchResults: [LinkItem] = []
     @Published var isSearching: Bool = false
     @Published var requestFailed: Bool = false
+    private var lastTermSearched: String = ""
 
     var noResults: Bool {
         !self.isSearching && (self.searchResults.isEmpty || self.searchText == "")
@@ -27,15 +28,26 @@ class SearchViewModel: ObservableObject {
     private func subscribeToSearchTextChanges() {
         self.$searchText
             .debounce(for: .seconds(Constants.debounceTime), scheduler: RunLoop.main)
-            .filter { $0.count >= 2 }
+            .filter { [weak self] text in
+                if text.count < 2 {
+                    self?.resetResults()
+                }
+                return text.count >= 2 && text != self?.lastTermSearched && self?.isSearching == false
+            }
             .sink { [weak self ] text in
                 self?.search(text)
             }
             .store(in: &self.cancellables)
     }
 
+    private func resetResults() {
+        self.lastTermSearched = ""
+        self.searchResults = []
+    }
+
     private func search(_ param: String) {
         isSearching = true
+        lastTermSearched = param
         Task {
             let result = await self.networkManager.search(for: param, limit: self.limit)
             await MainActor.run {
