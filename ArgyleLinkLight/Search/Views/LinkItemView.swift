@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct LinkItemView: View {
-
     let linkItem: LinkItem
     let errorImage = Image(systemName: "exclamationmark.triangle")
 

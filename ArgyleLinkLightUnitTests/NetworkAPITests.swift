@@ -2,7 +2,6 @@
 import XCTest
 
 final class NetworkAPITests: XCTestCase {
-
     var session: URLSessionProtocol!
     var sut: NetworkAPIProtocol!
     var endpoint: SearchEndpoint = .search(searchTerm: "", limit: "15")

@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct SearchInputView: View {
-
     @StateObject var viewModel: SearchViewModel
 
     var body: some View {
