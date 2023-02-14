@@ -8,7 +8,7 @@ struct LinkItem: Codable, Equatable {
     let itemID: String
     let name: String
     let kind: String
-    let logoURL: String
+    let logoURL: String?
 
     enum CodingKeys: String, CodingKey {
         case itemID = "item_id"
