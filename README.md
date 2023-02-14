@@ -29,4 +29,4 @@ Hi! This is my solution to the iOS Technical Task.
 
 ## Application screen recording
 
-https://user-images.githubusercontent.com/14140528/218541856-b7e20a75-37be-44f2-8295-32f4392f63ed.mp4
+https://user-images.githubusercontent.com/14140528/218861505-5076f826-afff-4e5e-80b2-0759ac7b6e32.mp4
