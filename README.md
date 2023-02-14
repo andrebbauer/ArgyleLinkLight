@@ -5,7 +5,7 @@ Hi! This is my solution to the iOS Technical Task.
 ## Description
 - **Architecture**: The application uses MVVM with Coordinator architecture. While a Coordinator might not have been strictly necessary for such a small application, it was included to follow the architecture pattern required by your SDK. I also followed SOLID principles as much as possible.
 - **Libraries Used**: None.
-- **Known Bugs**: There are no known bugs at the time of submission.
+- **Known Bugs**: There are no known bugs at the time of submission. Edit: when trying to search for "Amazo" it seems to return an error.
   
 ## Requirements
 - Show an input field which captures search queries. ✅
